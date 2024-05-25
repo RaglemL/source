@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Create a new Google Cloud project
-gcloud projects create go-rollingsuds.net-source --name="Go-Rollingsuds.Net-Source"
+gcloud projects create go-rollingsudsnet-source --name="Go-Rollingsudsnet-Source"
 sleep 5 # Adding a delay of 5 seconds
 
 # Set the current Google Cloud project
-gcloud config set project go-rollingsuds.net-source
+gcloud config set project go-rollingsudsnet-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Provide yourself Organization Policy Administrator and Project Creator roles
@@ -18,27 +18,27 @@ gcloud resource-manager org-policies disable-enforce iam.disableServiceAccountKe
 sleep 5 # Adding a delay of 5 seconds
 
 # Create a new service account
-gcloud iam service-accounts create Go-Rollingsuds.Net-Source --project=go-rollingsuds.net-source
+gcloud iam service-accounts create Go-Rollingsudsnet-Source --project=go-rollingsudsnet-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Add IAM policy binding to the project
-gcloud projects add-iam-policy-binding go-rollingsuds.net-source --member="serviceAccount:Go-Rollingsuds.Net-Source@go-rollingsuds.net-source.iam.gserviceaccount.com" --role="roles/editor"
+gcloud projects add-iam-policy-binding go-rollingsudsnet-source --member="serviceAccount:Go-Rollingsudsnet-Source@go-rollingsudsnet-source.iam.gserviceaccount.com" --role="roles/editor"
 sleep 5 # Adding a delay of 5 seconds
 
 # Get the unique ID of the service account
-gcloud iam service-accounts describe Go-Rollingsuds.Net-Source@go-rollingsuds.net-source.iam.gserviceaccount.com --project=go-rollingsuds.net-source --format="value(uniqueId)"
+gcloud iam service-accounts describe Go-Rollingsudsnet-Source@go-rollingsudsnet-source.iam.gserviceaccount.com --project=go-rollingsudsnet-source --format="value(uniqueId)"
 sleep 5 # Adding a delay of 5 seconds
 
 # Create a service account key and save it to a JSON file
-gcloud iam service-accounts keys create Go-Rollingsuds.Net-Source.json --iam-account=Go-Rollingsuds.Net-Source@go-rollingsuds.net-source.iam.gserviceaccount.com --project=go-rollingsuds.net-source
+gcloud iam service-accounts keys create Go-Rollingsudsnet-Source.json --iam-account=Go-Rollingsudsnet-Source@go-rollingsudsnet-source.iam.gserviceaccount.com --project=go-rollingsudsnet-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable necessary Google services
-gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com --project=go-rollingsuds.net-source
+gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com --project=go-rollingsudsnet-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Download the service account key JSON file
-cloudshell download Go-Rollingsuds.Net-Source.json
+cloudshell download Go-Rollingsudsnet-Source.json
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable the constraint iam.disableServiceAccountKeyCreation enforcement
