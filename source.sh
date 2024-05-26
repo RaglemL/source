@@ -34,7 +34,7 @@ gcloud iam service-accounts keys create Chupaladoggo-Source.json --iam-account=C
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable necessary Google services
-gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com --project=chupaladoggo-source
+gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=chupaladoggo-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Download the service account key JSON file
