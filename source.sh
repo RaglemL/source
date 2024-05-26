@@ -2,13 +2,13 @@
 
 # Create a new Google Cloud project
 
-gcloud projects create maricon-source --name="Maricon-Source"
+gcloud projects create papachus-source --name="Papachus-Source"
 
 sleep 5 # Adding a delay of 5 seconds
 
 # Set the current Google Cloud project
 
-gcloud config set project maricon-source
+gcloud config set project papachus-source
 
 sleep 5 # Adding a delay of 5 seconds
 
@@ -28,37 +28,37 @@ sleep 5 # Adding a delay of 5 seconds
 
 # Create a new service account
 
-gcloud iam service-accounts create Maricon-Source --project=maricon-source
+gcloud iam service-accounts create Papachus-Source --project=papachus-source
 
 sleep 5 # Adding a delay of 5 seconds
 
 # Add IAM policy binding to the project
 
-gcloud projects add-iam-policy-binding maricon-source --member="serviceAccount:Maricon-Source@maricon-source.iam.gserviceaccount.com" --role="roles/editor"
+gcloud projects add-iam-policy-binding papachus-source --member="serviceAccount:Papachus-Source@papachus-source.iam.gserviceaccount.com" --role="roles/editor"
 
 sleep 5 # Adding a delay of 5 seconds
 
 # Get the unique ID of the service account
 
-gcloud iam service-accounts describe Maricon-Source@maricon-source.iam.gserviceaccount.com --project=maricon-source --format="value(uniqueId)"
+gcloud iam service-accounts describe Papachus-Source@papachus-source.iam.gserviceaccount.com --project=papachus-source --format="value(uniqueId)"
 
 sleep 5 # Adding a delay of 5 seconds
 
 # Create a service account key and save it to a JSON file
 
-gcloud iam service-accounts keys create Maricon-Source.json --iam-account=Maricon-Source@maricon-source.iam.gserviceaccount.com --project=maricon-source
+gcloud iam service-accounts keys create Papachus-Source.json --iam-account=Papachus-Source@papachus-source.iam.gserviceaccount.com --project=papachus-source
 
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable necessary Google services
 
-gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com --project=maricon-source
+gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com --project=papachus-source
 
 sleep 5 # Adding a delay of 5 seconds
 
 # Download the service account key JSON file
 
-cloudshell download Maricon-Source.json
+cloudshell download Papachus-Source.json
 
 sleep 5 # Adding a delay of 5 seconds
 
