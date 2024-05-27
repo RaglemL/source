@@ -1,34 +1,34 @@
 #!/bin/bash
 
 # Create a new Google Cloud project
-echo "Creating GCP Project..."
+echo "[Creating GCP Project...]"
 gcloud projects create rollingsudscharlotte-source --name="Rollingsudscharlotte-Source"
 sleep 5 # Adding a delay of 5 seconds
 
 # Set the current Google Cloud project
-echo "Setting GCP Project..."
+echo "[Setting GCP Project...]"
 gcloud config set project rollingsudscharlotte-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Provide yourself Organization Policy Administrator and Project Creator roles
-echo "Assigning Roles..."
+echo "[Assigning Roles...]"
 gcloud organizations add-iam-policy-binding 194473311192 --member="user:cloudasta@rollingsudscharlotte.com" --role="roles/orgpolicy.policyAdmin"
 sleep 5 # Adding a delay of 5 seconds
 gcloud organizations add-iam-policy-binding 194473311192 --member="user:cloudasta@rollingsudscharlotte.com" --role="roles/resourcemanager.projectCreator"
 sleep 5 # Adding a delay of 5 seconds
 
 # Disable the constraint iam.disableServiceAccountKeyCreation enforcement
-echo "Disabling Policy Enforcement..."
+echo "[Disabling Policy Enforcement...]"
 gcloud resource-manager org-policies disable-enforce iam.disableServiceAccountKeyCreation --organization=194473311192
 sleep 60 # Adding a delay of 60 seconds to allow propagation
 
 # Create a new service account
-echo "Creating Service Account..."
+echo "[Creating Service Account...]"
 gcloud iam service-accounts create Rollingsudscharlotte-Source --project=rollingsudscharlotte-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Add IAM policy binding to the project
-echo "Adding Policies..."
+echo "[Adding Policies...]"
 gcloud projects add-iam-policy-binding rollingsudscharlotte-source --member="serviceAccount:Rollingsudscharlotte-Source@rollingsudscharlotte-source.iam.gserviceaccount.com" --role="roles/editor"
 sleep 5 # Adding a delay of 5 seconds
 
