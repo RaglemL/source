@@ -33,14 +33,14 @@ gcloud projects add-iam-policy-binding chupaladoggo-source --member="serviceAcco
 sleep 5 # Adding a delay of 5 seconds
 
 # Get the unique ID of the service account
-
+echo "Obtaining Unique ID..."
 gcloud iam service-accounts describe Chupaladoggo-Source@chupaladoggo-source.iam.gserviceaccount.com --project=chupaladoggo-source --format="value(uniqueId)"
 sleep 5 # Adding a delay of 5 seconds
 
 # Create a service account key and save it to a JSON file
+
 gcloud iam service-accounts keys create Chupaladoggo-Source.json --iam-account=Chupaladoggo-Source@chupaladoggo-source.iam.gserviceaccount.com --project=chupaladoggo-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable necessary Google services
 gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=chupaladoggo-source
-sleep 5 # Adding a delay of 5 seconds
