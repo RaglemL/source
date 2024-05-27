@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Create a new Google Cloud project
+echo "Creating GCP Project..."
 gcloud projects create chupaladoggo-source --name="Chupaladoggo-Source"
 sleep 5 # Adding a delay of 5 seconds
 
@@ -43,4 +44,3 @@ sleep 5 # Adding a delay of 5 seconds
 
 # Enable the constraint iam.disableServiceAccountKeyCreation enforcement
 gcloud resource-manager org-policies enable-enforce iam.disableServiceAccountKeyCreation --organization=397129301957
-sleep 5 # Adding a delay of 5 seconds
