@@ -20,7 +20,7 @@ sleep 5 # Adding a delay of 5 seconds
 # Disable the constraint iam.disableServiceAccountKeyCreation enforcement
 echo "Disabling Policy Enforcement..."
 gcloud resource-manager org-policies disable-enforce iam.disableServiceAccountKeyCreation --organization=797902959636
-sleep 30 # Adding a delay of 30 seconds
+sleep 60 # Adding a delay of 60 seconds to allow propagation
 
 # Create a new service account
 echo "Creating Service Account..."
