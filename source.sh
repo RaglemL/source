@@ -13,6 +13,7 @@ sleep 5 # Adding a delay of 5 seconds
 # Provide yourself Organization Policy Administrator and Project Creator roles
 echo "Assigning Roles..."
 gcloud organizations add-iam-policy-binding 397129301957 --member="user:cloudasta@rolling-suds.net" --role="roles/orgpolicy.policyAdmin"
+sleep 5 # Adding a delay of 5 seconds
 gcloud organizations add-iam-policy-binding 397129301957 --member="user:cloudasta@rolling-suds.net" --role="roles/resourcemanager.projectCreator"
 sleep 5 # Adding a delay of 5 seconds
 
@@ -22,7 +23,7 @@ gcloud resource-manager org-policies disable-enforce iam.disableServiceAccountKe
 sleep 5 # Adding a delay of 5 seconds
 
 # Create a new service account
-
+echo "Creating Service Account..."
 gcloud iam service-accounts create Chupaladoggo-Source --project=chupaladoggo-source
 sleep 5 # Adding a delay of 5 seconds
 
@@ -43,4 +44,3 @@ gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleap
 sleep 5 # Adding a delay of 5 seconds
 
 # Download the service account key JSON file
-cloudshell download Chupaladoggo-Source.json
