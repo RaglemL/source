@@ -60,3 +60,4 @@ sleep 5 # Adding a delay of 5 seconds
 # Tasks completed confirmation
 echo "All tasks completed."
 sleep 5 # Adding a delay of 5 seconds
+echo "Script created by Luis Melgar."
