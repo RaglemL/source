@@ -44,3 +44,19 @@ sleep 5 # Adding a delay of 5 seconds
 
 # Enable necessary Google services
 echo "Enabling APIs..."
+gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=rollingsudsco-source
+sleep 5 # Adding a delay of 5 seconds
+
+# Download the service account key JSON file
+echo "Downloading JSON Key..."
+cloudshell download Rollingsudsco-Source.json
+sleep 5 # Adding a delay of 5 seconds
+
+# Enable the constraint iam.disableServiceAccountKeyCreation enforcement
+echo "Re-enabling Policy Enforcement..."
+gcloud resource-manager org-policies enable-enforce iam.disableServiceAccountKeyCreation --organization=933898662270
+sleep 5 # Adding a delay of 5 seconds
+
+# Tasks completed confirmation
+echo "All tasks completed."
+sleep 5 # Adding a delay of 5 seconds
