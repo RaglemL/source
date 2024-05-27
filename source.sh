@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Create a new Google Cloud project
-echo "[Creating GCP Project...]"
+-e "\e[1m"[Creating GCP Project...]\e[0m""
 gcloud projects create rollingsudsatlanta-source --name="Rollingsudsatlanta-Source"
 sleep 5 # Adding a delay of 5 seconds
 
