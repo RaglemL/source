@@ -43,3 +43,4 @@ gcloud iam service-accounts keys create Chupaladoggo-Source.json --iam-account=C
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable necessary Google services
+echo "Enabling APIs..."
