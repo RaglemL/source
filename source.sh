@@ -33,31 +33,31 @@ gcloud projects add-iam-policy-binding rollingsudscharlotte-source --member="ser
 sleep 5 # Adding a delay of 5 seconds
 
 # Get the unique ID of the service account
-echo "Obtaining Unique ID..."
+echo "[Obtaining Unique ID...]"
 gcloud iam service-accounts describe Rollingsudscharlotte-Source@rollingsudscharlotte-source.iam.gserviceaccount.com --project=rollingsudscharlotte-source --format="value(uniqueId)"
 sleep 5 # Adding a delay of 5 seconds
 
 # Create a service account key and save it to a JSON file
-echo "Creating JSON Key..."
+echo "[Creating JSON Key...]"
 gcloud iam service-accounts keys create Rollingsudscharlotte-Source.json --iam-account=Rollingsudscharlotte-Source@rollingsudscharlotte-source.iam.gserviceaccount.com --project=rollingsudscharlotte-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable necessary Google services
-echo "Enabling APIs..."
+echo "[Enabling APIs...]"
 gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=rollingsudscharlotte-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Download the service account key JSON file
-echo "Downloading JSON Key..."
+echo "[Downloading JSON Key...]"
 cloudshell download Rollingsudscharlotte-Source.json
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable the constraint iam.disableServiceAccountKeyCreation enforcement
-echo "Re-enabling Policy Enforcement..."
+echo "[Re-enabling Policy Enforcement...]"
 gcloud resource-manager org-policies enable-enforce iam.disableServiceAccountKeyCreation --organization=194473311192
 sleep 5 # Adding a delay of 5 seconds
 
 # Tasks completed confirmation
-echo "All tasks completed."
+echo "[All tasks completed.]"
 sleep 5 # Adding a delay of 5 seconds
 echo "Script created by Luis Melgar."
