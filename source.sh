@@ -6,6 +6,7 @@ gcloud projects create chupaladoggo-source --name="Chupaladoggo-Source"
 sleep 5 # Adding a delay of 5 seconds
 
 # Set the current Google Cloud project
+
 gcloud config set project chupaladoggo-source
 sleep 5 # Adding a delay of 5 seconds
 
@@ -43,4 +44,3 @@ cloudshell download Chupaladoggo-Source.json
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable the constraint iam.disableServiceAccountKeyCreation enforcement
-gcloud resource-manager org-policies enable-enforce iam.disableServiceAccountKeyCreation --organization=397129301957
