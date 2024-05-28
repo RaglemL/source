@@ -6,7 +6,7 @@ gcloud projects create rollingsudscincinnati-source --name="Rollingsudscincinnat
 sleep 5 # Adding a delay of 5 seconds
 
 # Set the current Google Cloud project
-echo "[Setting GCP Project...]"
+echo "[Setting up GCP Project...]"
 gcloud config set project rollingsudscincinnati-source
 sleep 5 # Adding a delay of 5 seconds
 
