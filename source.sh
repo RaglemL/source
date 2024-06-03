@@ -2,59 +2,59 @@
 
 # Create a new Google Cloud project
 echo "[Creating GCP Project...]"
-gcloud projects create rollingsudsindianapolis-source --name="Rollingsudsindianapolis-Source"
+gcloud projects create rollingsudssacramento-source --name="Rollingsudssacramento-Source"
 sleep 5 # Adding a delay of 5 seconds
 
 # Set the current Google Cloud project
 echo "[Setting up GCP Project...]"
-gcloud config set project rollingsudsindianapolis-source
+gcloud config set project rollingsudssacramento-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Provide yourself Organization Policy Administrator and Project Creator roles
 echo "[Assigning Roles...]"
-gcloud organizations add-iam-policy-binding 786898567820 --member="user:cloudasta@rollingsudsindianapolis.com" --role="roles/orgpolicy.policyAdmin"
+gcloud organizations add-iam-policy-binding 675866844143 --member="user:cloudasta@rollingsudssacramento.com" --role="roles/orgpolicy.policyAdmin"
 sleep 5 # Adding a delay of 5 seconds
-gcloud organizations add-iam-policy-binding 786898567820 --member="user:cloudasta@rollingsudsindianapolis.com" --role="roles/resourcemanager.projectCreator"
+gcloud organizations add-iam-policy-binding 675866844143 --member="user:cloudasta@rollingsudssacramento.com" --role="roles/resourcemanager.projectCreator"
 sleep 5 # Adding a delay of 5 seconds
 
 # Disable the constraint iam.disableServiceAccountKeyCreation enforcement
 echo "[Disabling Policy Enforcement...]"
-gcloud resource-manager org-policies disable-enforce iam.disableServiceAccountKeyCreation --organization=786898567820
+gcloud resource-manager org-policies disable-enforce iam.disableServiceAccountKeyCreation --organization=675866844143
 sleep 60 # Adding a delay of 60 seconds to allow propagation
 
 # Create a new service account
 echo "[Creating Service Account...]"
-gcloud iam service-accounts create Rollingsudsindianapolis-Source --project=rollingsudsindianapolis-source
+gcloud iam service-accounts create Rollingsudssacramento-Source --project=rollingsudssacramento-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Add IAM policy binding to the project
 echo "[Adding Policies...]"
-gcloud projects add-iam-policy-binding rollingsudsindianapolis-source --member="serviceAccount:Rollingsudsindianapolis-Source@rollingsudsindianapolis-source.iam.gserviceaccount.com" --role="roles/editor"
+gcloud projects add-iam-policy-binding rollingsudssacramento-source --member="serviceAccount:Rollingsudssacramento-Source@rollingsudssacramento-source.iam.gserviceaccount.com" --role="roles/editor"
 sleep 5 # Adding a delay of 5 seconds
 
 # Get the unique ID of the service account
 echo "[Obtaining Unique ID...]"
-gcloud iam service-accounts describe Rollingsudsindianapolis-Source@rollingsudsindianapolis-source.iam.gserviceaccount.com --project=rollingsudsindianapolis-source --format="value(uniqueId)"
+gcloud iam service-accounts describe Rollingsudssacramento-Source@rollingsudssacramento-source.iam.gserviceaccount.com --project=rollingsudssacramento-source --format="value(uniqueId)"
 sleep 5 # Adding a delay of 5 seconds
 
 # Create a service account key and save it to a JSON file
 echo "[Creating JSON Key...]"
-gcloud iam service-accounts keys create Rollingsudsindianapolis-Source.json --iam-account=Rollingsudsindianapolis-Source@rollingsudsindianapolis-source.iam.gserviceaccount.com --project=rollingsudsindianapolis-source
+gcloud iam service-accounts keys create Rollingsudssacramento-Source.json --iam-account=Rollingsudssacramento-Source@rollingsudssacramento-source.iam.gserviceaccount.com --project=rollingsudssacramento-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable necessary Google services
 echo "[Enabling APIs...]"
-gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=rollingsudsindianapolis-source
+gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=rollingsudssacramento-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Download the service account key JSON file
 echo "[Downloading JSON Key...]"
-cloudshell download Rollingsudsindianapolis-Source.json
+cloudshell download Rollingsudssacramento-Source.json
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable the constraint iam.disableServiceAccountKeyCreation enforcement
 echo "[Re-enabling Policy Enforcement...]"
-gcloud resource-manager org-policies enable-enforce iam.disableServiceAccountKeyCreation --organization=786898567820
+gcloud resource-manager org-policies enable-enforce iam.disableServiceAccountKeyCreation --organization=675866844143
 sleep 5 # Adding a delay of 5 seconds
 
 # Tasks completed confirmation
