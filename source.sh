@@ -2,12 +2,12 @@
 
 # Create a new Google Cloud project
 echo "[Creating GCP Project...]"
-gcloud projects create anago-email-source --name="Anago-Email-Source"
+gcloud projects create rollingsudstulsa-source --name="Rollingsudstulsa-Source"
 sleep 5 # Adding a delay of 5 seconds
 
 # Set the current Google Cloud project
 echo "[Setting up GCP Project...]"
-gcloud config set project anago-email-source
+gcloud config set project rollingsudstulsa-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Provide yourself Organization Policy Administrator and Project Creator roles
@@ -24,32 +24,32 @@ sleep 60 # Adding a delay of 60 seconds to allow propagation
 
 # Create a new service account
 echo "[Creating Service Account...]"
-gcloud iam service-accounts create Anago-Email-Source --project=anago-email-source
+gcloud iam service-accounts create Rollingsudstulsa-Source --project=rollingsudstulsa-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Add IAM policy binding to the project
 echo "[Adding Policies...]"
-gcloud projects add-iam-policy-binding anago-email-source --member="serviceAccount:Anago-Email-Source@anago-email-source.iam.gserviceaccount.com" --role="roles/editor"
+gcloud projects add-iam-policy-binding rollingsudstulsa-source --member="serviceAccount:Rollingsudstulsa-Source@rollingsudstulsa-source.iam.gserviceaccount.com" --role="roles/editor"
 sleep 5 # Adding a delay of 5 seconds
 
 # Get the unique ID of the service account
 echo "[Obtaining Unique ID...]"
-gcloud iam service-accounts describe Anago-Email-Source@anago-email-source.iam.gserviceaccount.com --project=anago-email-source --format="value(uniqueId)"
+gcloud iam service-accounts describe Rollingsudstulsa-Source@rollingsudstulsa-source.iam.gserviceaccount.com --project=rollingsudstulsa-source --format="value(uniqueId)"
 sleep 5 # Adding a delay of 5 seconds
 
 # Create a service account key and save it to a JSON file
 echo "[Creating JSON Key...]"
-gcloud iam service-accounts keys create Anago-Email-Source.json --iam-account=Anago-Email-Source@anago-email-source.iam.gserviceaccount.com --project=anago-email-source
+gcloud iam service-accounts keys create Rollingsudstulsa-Source.json --iam-account=Rollingsudstulsa-Source@rollingsudstulsa-source.iam.gserviceaccount.com --project=rollingsudstulsa-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable necessary Google services
 echo "[Enabling APIs...]"
-gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=anago-email-source
+gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=rollingsudstulsa-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Download the service account key JSON file
 echo "[Downloading JSON Key...]"
-cloudshell download Anago-Email-Source.json
+cloudshell download Rollingsudstulsa-Source.json
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable the constraint iam.disableServiceAccountKeyCreation enforcement
