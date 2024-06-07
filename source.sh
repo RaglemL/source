@@ -12,14 +12,14 @@ sleep 5 # Adding a delay of 5 seconds
 
 # Provide yourself Organization Policy Administrator and Project Creator roles
 echo "[Assigning Roles...]"
-gcloud organizations add-iam-policy-binding 930099629639 --member="user:cloudasta@anago-email.net" --role="roles/orgpolicy.policyAdmin"
+gcloud organizations add-iam-policy-binding 703237820414 --member="user:cloudasta@archive.rollingsudstulsa.com" --role="roles/orgpolicy.policyAdmin"
 sleep 5 # Adding a delay of 5 seconds
-gcloud organizations add-iam-policy-binding 930099629639 --member="user:cloudasta@anago-email.net" --role="roles/resourcemanager.projectCreator"
+gcloud organizations add-iam-policy-binding 703237820414 --member="user:cloudasta@archive.rollingsudstulsa.com" --role="roles/resourcemanager.projectCreator"
 sleep 5 # Adding a delay of 5 seconds
 
 # Disable the constraint iam.disableServiceAccountKeyCreation enforcement
 echo "[Disabling Policy Enforcement...]"
-gcloud resource-manager org-policies disable-enforce iam.disableServiceAccountKeyCreation --organization=930099629639
+gcloud resource-manager org-policies disable-enforce iam.disableServiceAccountKeyCreation --organization=703237820414
 sleep 60 # Adding a delay of 60 seconds to allow propagation
 
 # Create a new service account
@@ -54,7 +54,7 @@ sleep 5 # Adding a delay of 5 seconds
 
 # Enable the constraint iam.disableServiceAccountKeyCreation enforcement
 echo "[Re-enabling Policy Enforcement...]"
-gcloud resource-manager org-policies enable-enforce iam.disableServiceAccountKeyCreation --organization=930099629639
+gcloud resource-manager org-policies enable-enforce iam.disableServiceAccountKeyCreation --organization=703237820414
 sleep 5 # Adding a delay of 5 seconds
 
 # Tasks completed confirmation
