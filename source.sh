@@ -2,59 +2,59 @@
 
 # Create a new Google Cloud project
 echo "[Creating GCP Project...]"
-gcloud projects create lf-powers-source --name="Lf-Powers-Source"
+gcloud projects create yourfranchisedesk-source --name="Yourfranchisedesk-Source"
 sleep 5 # Adding a delay of 5 seconds
 
 # Set the current Google Cloud project
 echo "[Setting up GCP Project...]"
-gcloud config set project lf-powers-source
+gcloud config set project yourfranchisedesk-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Provide yourself Organization Policy Administrator and Project Creator roles
 echo "[Assigning Roles...]"
-gcloud organizations add-iam-policy-binding 1037543622993 --member="user:cloudasta@lf-powers.com" --role="roles/orgpolicy.policyAdmin"
+gcloud organizations add-iam-policy-binding 521885385994 --member="user:cloudasta@yourfranchisedesk.com" --role="roles/orgpolicy.policyAdmin"
 sleep 5 # Adding a delay of 5 seconds
-gcloud organizations add-iam-policy-binding 1037543622993 --member="user:cloudasta@lf-powers.com" --role="roles/resourcemanager.projectCreator"
+gcloud organizations add-iam-policy-binding 521885385994 --member="user:cloudasta@yourfranchisedesk.com" --role="roles/resourcemanager.projectCreator"
 sleep 5 # Adding a delay of 5 seconds
 
 # Disable the constraint iam.disableServiceAccountKeyCreation enforcement
 echo "[Disabling Policy Enforcement...]"
-gcloud resource-manager org-policies disable-enforce iam.disableServiceAccountKeyCreation --organization=1037543622993
+gcloud resource-manager org-policies disable-enforce iam.disableServiceAccountKeyCreation --organization=521885385994
 sleep 60 # Adding a delay of 60 seconds to allow propagation
 
 # Create a new service account
 echo "[Creating Service Account...]"
-gcloud iam service-accounts create Lf-Powers-Source --project=lf-powers-source
+gcloud iam service-accounts create Yourfranchisedesk-Source --project=yourfranchisedesk-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Add IAM policy binding to the project
 echo "[Adding Policies...]"
-gcloud projects add-iam-policy-binding lf-powers-source --member="serviceAccount:Lf-Powers-Source@lf-powers-source.iam.gserviceaccount.com" --role="roles/editor"
+gcloud projects add-iam-policy-binding yourfranchisedesk-source --member="serviceAccount:Yourfranchisedesk-Source@yourfranchisedesk-source.iam.gserviceaccount.com" --role="roles/editor"
 sleep 5 # Adding a delay of 5 seconds
 
 # Get the unique ID of the service account
 echo "[Obtaining Unique ID...]"
-gcloud iam service-accounts describe Lf-Powers-Source@lf-powers-source.iam.gserviceaccount.com --project=lf-powers-source --format="value(uniqueId)"
+gcloud iam service-accounts describe Yourfranchisedesk-Source@yourfranchisedesk-source.iam.gserviceaccount.com --project=yourfranchisedesk-source --format="value(uniqueId)"
 sleep 5 # Adding a delay of 5 seconds
 
 # Create a service account key and save it to a JSON file
 echo "[Creating JSON Key...]"
-gcloud iam service-accounts keys create Lf-Powers-Source.json --iam-account=Lf-Powers-Source@lf-powers-source.iam.gserviceaccount.com --project=lf-powers-source
+gcloud iam service-accounts keys create Yourfranchisedesk-Source.json --iam-account=Yourfranchisedesk-Source@yourfranchisedesk-source.iam.gserviceaccount.com --project=yourfranchisedesk-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable necessary Google services
 echo "[Enabling APIs...]"
-gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=lf-powers-source
+gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=yourfranchisedesk-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Download the service account key JSON file
 echo "[Downloading JSON Key...]"
-cloudshell download Lf-Powers-Source.json
+cloudshell download Yourfranchisedesk-Source.json
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable the constraint iam.disableServiceAccountKeyCreation enforcement
 echo "[Re-enabling Policy Enforcement...]"
-gcloud resource-manager org-policies enable-enforce iam.disableServiceAccountKeyCreation --organization=1037543622993
+gcloud resource-manager org-policies enable-enforce iam.disableServiceAccountKeyCreation --organization=521885385994
 sleep 5 # Adding a delay of 5 seconds
 
 # Tasks completed confirmation
