@@ -2,12 +2,12 @@
 
 # Create a new Google Cloud project
 echo "[Creating GCP Project...]"
-gcloud projects create gslcomland-source --name="Gslcomland-Source"
+gcloud projects create gosupplypointe-source --name="Gosupplypointe-Source"
 sleep 5 # Adding a delay of 5 seconds
 
 # Set the current Google Cloud project
 echo "[Setting up GCP Project...]"
-gcloud config set project gslcomland-source
+gcloud config set project gosupplypointe-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Provide yourself Organization Policy Administrator and Project Creator roles
@@ -24,32 +24,32 @@ sleep 60 # Adding a delay of 60 seconds to allow propagation
 
 # Create a new service account
 echo "[Creating Service Account...]"
-gcloud iam service-accounts create Gslcomland-Source --project=gslcomland-source
+gcloud iam service-accounts create Gosupplypointe-Source --project=gosupplypointe-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Add IAM policy binding to the project
 echo "[Adding Policies...]"
-gcloud projects add-iam-policy-binding gslcomland-source --member="serviceAccount:Gslcomland-Source@gslcomland-source.iam.gserviceaccount.com" --role="roles/editor"
+gcloud projects add-iam-policy-binding gosupplypointe-source --member="serviceAccount:Gosupplypointe-Source@gosupplypointe-source.iam.gserviceaccount.com" --role="roles/editor"
 sleep 5 # Adding a delay of 5 seconds
 
 # Get the unique ID of the service account
 echo "[Obtaining Unique ID...]"
-gcloud iam service-accounts describe Gslcomland-Source@gslcomland-source.iam.gserviceaccount.com --project=gslcomland-source --format="value(uniqueId)"
+gcloud iam service-accounts describe Gosupplypointe-Source@gosupplypointe-source.iam.gserviceaccount.com --project=gosupplypointe-source --format="value(uniqueId)"
 sleep 5 # Adding a delay of 5 seconds
 
 # Create a service account key and save it to a JSON file
 echo "[Creating JSON Key...]"
-gcloud iam service-accounts keys create Gslcomland-Source.json --iam-account=Gslcomland-Source@gslcomland-source.iam.gserviceaccount.com --project=gslcomland-source
+gcloud iam service-accounts keys create Gosupplypointe-Source.json --iam-account=Gosupplypointe-Source@gosupplypointe-source.iam.gserviceaccount.com --project=gosupplypointe-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable necessary Google services
 echo "[Enabling APIs...]"
-gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=gslcomland-source
+gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=gosupplypointe-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Download the service account key JSON file
 echo "[Downloading JSON Key...]"
-cloudshell download Gslcomland-Source.json
+cloudshell download Gosupplypointe-Source.json
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable the constraint iam.disableServiceAccountKeyCreation enforcement
