@@ -2,59 +2,59 @@
 
 # Create a new Google Cloud project
 echo "[Creating GCP Project...]"
-gcloud projects create go-verus-source --name="Go-Verus-Source"
+gcloud projects create primewaterproof-source --name="Primewaterproof-Source"
 sleep 5 # Adding a delay of 5 seconds
 
 # Set the current Google Cloud project
 echo "[Setting up GCP Project...]"
-gcloud config set project go-verus-source
+gcloud config set project primewaterproof-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Provide yourself Organization Policy Administrator and Project Creator roles
 echo "[Assigning Roles...]"
-gcloud organizations add-iam-policy-binding 177872313697 --member="user:cloudasta@go-verus.net" --role="roles/orgpolicy.policyAdmin"
+gcloud organizations add-iam-policy-binding 1092643197679 --member="user:cloudasta@archive.primewaterproof.com" --role="roles/orgpolicy.policyAdmin"
 sleep 5 # Adding a delay of 5 seconds
-gcloud organizations add-iam-policy-binding 177872313697 --member="user:cloudasta@go-verus.net" --role="roles/resourcemanager.projectCreator"
+gcloud organizations add-iam-policy-binding 1092643197679 --member="user:cloudasta@archive.primewaterproof.com" --role="roles/resourcemanager.projectCreator"
 sleep 5 # Adding a delay of 5 seconds
 
 # Disable the constraint iam.disableServiceAccountKeyCreation enforcement
 echo "[Disabling Policy Enforcement...]"
-gcloud resource-manager org-policies disable-enforce iam.disableServiceAccountKeyCreation --organization=177872313697
+gcloud resource-manager org-policies disable-enforce iam.disableServiceAccountKeyCreation --organization=1092643197679
 sleep 60 # Adding a delay of 60 seconds to allow propagation
 
 # Create a new service account
 echo "[Creating Service Account...]"
-gcloud iam service-accounts create Go-Verus-Source --project=go-verus-source
+gcloud iam service-accounts create Primewaterproof-Source --project=primewaterproof-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Add IAM policy binding to the project
 echo "[Adding Policies...]"
-gcloud projects add-iam-policy-binding go-verus-source --member="serviceAccount:Go-Verus-Source@go-verus-source.iam.gserviceaccount.com" --role="roles/editor"
+gcloud projects add-iam-policy-binding primewaterproof-source --member="serviceAccount:Primewaterproof-Source@primewaterproof-source.iam.gserviceaccount.com" --role="roles/editor"
 sleep 5 # Adding a delay of 5 seconds
 
 # Get the unique ID of the service account
 echo "[Obtaining Unique ID...]"
-gcloud iam service-accounts describe Go-Verus-Source@go-verus-source.iam.gserviceaccount.com --project=go-verus-source --format="value(uniqueId)"
+gcloud iam service-accounts describe Primewaterproof-Source@primewaterproof-source.iam.gserviceaccount.com --project=primewaterproof-source --format="value(uniqueId)"
 sleep 5 # Adding a delay of 5 seconds
 
 # Create a service account key and save it to a JSON file
 echo "[Creating JSON Key...]"
-gcloud iam service-accounts keys create Go-Verus-Source.json --iam-account=Go-Verus-Source@go-verus-source.iam.gserviceaccount.com --project=go-verus-source
+gcloud iam service-accounts keys create Primewaterproof-Source.json --iam-account=Primewaterproof-Source@primewaterproof-source.iam.gserviceaccount.com --project=primewaterproof-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable necessary Google services
 echo "[Enabling APIs...]"
-gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=go-verus-source
+gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=primewaterproof-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Download the service account key JSON file
 echo "[Downloading JSON Key...]"
-cloudshell download Go-Verus-Source.json
+cloudshell download Primewaterproof-Source.json
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable the constraint iam.disableServiceAccountKeyCreation enforcement
 echo "[Re-enabling Policy Enforcement...]"
-gcloud resource-manager org-policies enable-enforce iam.disableServiceAccountKeyCreation --organization=177872313697
+gcloud resource-manager org-policies enable-enforce iam.disableServiceAccountKeyCreation --organization=1092643197679
 sleep 5 # Adding a delay of 5 seconds
 
 # Tasks completed confirmation
