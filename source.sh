@@ -2,59 +2,59 @@
 
 # Create a new Google Cloud project
 echo "[Creating GCP Project...]"
-gcloud projects create somervilleservices-source --name="Somervilleservices-Source"
+gcloud projects create somervillefacilities-source --name="Somervillefacilities-Source"
 sleep 5 # Adding a delay of 5 seconds
 
 # Set the current Google Cloud project
 echo "[Setting up GCP Project...]"
-gcloud config set project somervilleservices-source
+gcloud config set project somervillefacilities-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Provide yourself Organization Policy Administrator and Project Creator roles
 echo "[Assigning Roles...]"
-gcloud organizations add-iam-policy-binding 1018290232775 --member="user:cloudasta@somervilleservices.net" --role="roles/orgpolicy.policyAdmin"
+gcloud organizations add-iam-policy-binding 665719230517 --member="user:cloudasta@somervillefacilities.com" --role="roles/orgpolicy.policyAdmin"
 sleep 5 # Adding a delay of 5 seconds
-gcloud organizations add-iam-policy-binding 1018290232775 --member="user:cloudasta@somervilleservices.net" --role="roles/resourcemanager.projectCreator"
+gcloud organizations add-iam-policy-binding 665719230517 --member="user:cloudasta@somervillefacilities.com" --role="roles/resourcemanager.projectCreator"
 sleep 5 # Adding a delay of 5 seconds
 
 # Disable the constraint iam.disableServiceAccountKeyCreation enforcement
 echo "[Disabling Policy Enforcement...]"
-gcloud resource-manager org-policies disable-enforce iam.disableServiceAccountKeyCreation --organization=1018290232775
+gcloud resource-manager org-policies disable-enforce iam.disableServiceAccountKeyCreation --organization=665719230517
 sleep 60 # Adding a delay of 60 seconds to allow propagation
 
 # Create a new service account
 echo "[Creating Service Account...]"
-gcloud iam service-accounts create Somervilleservices-Source --project=somervilleservices-source
+gcloud iam service-accounts create Somervillefacilities-Source --project=somervillefacilities-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Add IAM policy binding to the project
 echo "[Adding Policies...]"
-gcloud projects add-iam-policy-binding somervilleservices-source --member="serviceAccount:Somervilleservices-Source@somervilleservices-source.iam.gserviceaccount.com" --role="roles/editor"
+gcloud projects add-iam-policy-binding somervillefacilities-source --member="serviceAccount:Somervillefacilities-Source@somervillefacilities-source.iam.gserviceaccount.com" --role="roles/editor"
 sleep 5 # Adding a delay of 5 seconds
 
 # Get the unique ID of the service account
 echo "[Obtaining Unique ID...]"
-gcloud iam service-accounts describe Somervilleservices-Source@somervilleservices-source.iam.gserviceaccount.com --project=somervilleservices-source --format="value(uniqueId)"
+gcloud iam service-accounts describe Somervillefacilities-Source@somervillefacilities-source.iam.gserviceaccount.com --project=somervillefacilities-source --format="value(uniqueId)"
 sleep 5 # Adding a delay of 5 seconds
 
 # Create a service account key and save it to a JSON file
 echo "[Creating JSON Key...]"
-gcloud iam service-accounts keys create Somervilleservices-Source.json --iam-account=Somervilleservices-Source@somervilleservices-source.iam.gserviceaccount.com --project=somervilleservices-source
+gcloud iam service-accounts keys create Somervillefacilities-Source.json --iam-account=Somervillefacilities-Source@somervillefacilities-source.iam.gserviceaccount.com --project=somervillefacilities-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable necessary Google services
 echo "[Enabling APIs...]"
-gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=somervilleservices-source
+gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=somervillefacilities-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Download the service account key JSON file
 echo "[Downloading JSON Key...]"
-cloudshell download Somervilleservices-Source.json
+cloudshell download Somervillefacilities-Source.json
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable the constraint iam.disableServiceAccountKeyCreation enforcement
 echo "[Re-enabling Policy Enforcement...]"
-gcloud resource-manager org-policies enable-enforce iam.disableServiceAccountKeyCreation --organization=1018290232775
+gcloud resource-manager org-policies enable-enforce iam.disableServiceAccountKeyCreation --organization=665719230517
 sleep 5 # Adding a delay of 5 seconds
 
 # Tasks completed confirmation
