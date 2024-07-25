@@ -2,12 +2,12 @@
 
 # Create a new Google Cloud project
 echo "[Creating GCP Project...]"
-gcloud projects create mayfaircabinetandstone-source --name="Mayfaircabinetandstone-Source"
+gcloud projects create mcas-source --name="Mcas-Source"
 sleep 5 # Adding a delay of 5 seconds
 
 # Set the current Google Cloud project
 echo "[Setting up GCP Project...]"
-gcloud config set project mayfaircabinetandstone-source
+gcloud config set project mcas-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Provide yourself Organization Policy Administrator and Project Creator roles
@@ -24,32 +24,32 @@ sleep 60 # Adding a delay of 60 seconds to allow propagation
 
 # Create a new service account
 echo "[Creating Service Account...]"
-gcloud iam service-accounts create Mayfaircabinetandstone-Source --project=mayfaircabinetandstone-source
+gcloud iam service-accounts create Mcas-Source --project=mcas-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Add IAM policy binding to the project
 echo "[Adding Policies...]"
-gcloud projects add-iam-policy-binding mayfaircabinetandstone-source --member="serviceAccount:Mayfaircabinetandstone-Source@mayfaircabinetandstone-source.iam.gserviceaccount.com" --role="roles/editor"
+gcloud projects add-iam-policy-binding mcas-source --member="serviceAccount:Mcas-Source@mcas-source.iam.gserviceaccount.com" --role="roles/editor"
 sleep 5 # Adding a delay of 5 seconds
 
 # Get the unique ID of the service account
 echo "[Obtaining Unique ID...]"
-gcloud iam service-accounts describe Mayfaircabinetandstone-Source@mayfaircabinetandstone-source.iam.gserviceaccount.com --project=mayfaircabinetandstone-source --format="value(uniqueId)"
+gcloud iam service-accounts describe Mcas-Source@mcas-source.iam.gserviceaccount.com --project=mcas-source --format="value(uniqueId)"
 sleep 5 # Adding a delay of 5 seconds
 
 # Create a service account key and save it to a JSON file
 echo "[Creating JSON Key...]"
-gcloud iam service-accounts keys create Mayfaircabinetandstone-Source.json --iam-account=Mayfaircabinetandstone-Source@mayfaircabinetandstone-source.iam.gserviceaccount.com --project=mayfaircabinetandstone-source
+gcloud iam service-accounts keys create Mcas-Source.json --iam-account=Mcas-Source@mcas-source.iam.gserviceaccount.com --project=mcas-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable necessary Google services
 echo "[Enabling APIs...]"
-gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=mayfaircabinetandstone-source
+gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=mcas-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Download the service account key JSON file
 echo "[Downloading JSON Key...]"
-cloudshell download Mayfaircabinetandstone-Source.json
+cloudshell download Mcas-Source.json
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable the constraint iam.disableServiceAccountKeyCreation enforcement
