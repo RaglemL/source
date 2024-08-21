@@ -2,12 +2,12 @@
 
 # Create a new Google Cloud project
 echo "[Creating GCP Project...]"
-gcloud projects create ecospace-source --name="Ecospace-Source"
+gcloud projects create fleetwatcher-source --name="Fleetwatcher-Source"
 sleep 5 # Adding a delay of 5 seconds
 
 # Set the current Google Cloud project
 echo "[Setting up GCP Project...]"
-gcloud config set project ecospace-source
+gcloud config set project fleetwatcher-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Provide yourself Organization Policy Administrator and Project Creator roles
@@ -24,32 +24,32 @@ sleep 60 # Adding a delay of 60 seconds to allow propagation
 
 # Create a new service account
 echo "[Creating Service Account...]"
-gcloud iam service-accounts create Ecospace-Source --project=ecospace-source
+gcloud iam service-accounts create Fleetwatcher-Source --project=fleetwatcher-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Add IAM policy binding to the project
 echo "[Adding Policies...]"
-gcloud projects add-iam-policy-binding ecospace-source --member="serviceAccount:Ecospace-Source@ecospace-source.iam.gserviceaccount.com" --role="roles/editor"
+gcloud projects add-iam-policy-binding fleetwatcher-source --member="serviceAccount:Fleetwatcher-Source@fleetwatcher-source.iam.gserviceaccount.com" --role="roles/editor"
 sleep 5 # Adding a delay of 5 seconds
 
 # Get the unique ID of the service account
 echo "[Obtaining Unique ID...]"
-gcloud iam service-accounts describe Ecospace-Source@ecospace-source.iam.gserviceaccount.com --project=ecospace-source --format="value(uniqueId)"
+gcloud iam service-accounts describe Fleetwatcher-Source@fleetwatcher-source.iam.gserviceaccount.com --project=fleetwatcher-source --format="value(uniqueId)"
 sleep 5 # Adding a delay of 5 seconds
 
 # Create a service account key and save it to a JSON file
 echo "[Creating JSON Key...]"
-gcloud iam service-accounts keys create Ecospace-Source.json --iam-account=Ecospace-Source@ecospace-source.iam.gserviceaccount.com --project=ecospace-source
+gcloud iam service-accounts keys create Fleetwatcher-Source.json --iam-account=Fleetwatcher-Source@fleetwatcher-source.iam.gserviceaccount.com --project=fleetwatcher-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable necessary Google services
 echo "[Enabling APIs...]"
-gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=ecospace-source
+gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=fleetwatcher-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Download the service account key JSON file
 echo "[Downloading JSON Key...]"
-cloudshell download Ecospace-Source.json
+cloudshell download Fleetwatcher-Source.json
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable the constraint iam.disableServiceAccountKeyCreation enforcement
