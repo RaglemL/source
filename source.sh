@@ -2,59 +2,59 @@
 
 # Create a new Google Cloud project
 echo "[Creating GCP Project...]"
-gcloud projects create darelsalam-source --name="Darelsalam-Source"
+gcloud projects create mindzvue-source --name="Mindzvue-Source"
 sleep 5 # Adding a delay of 5 seconds
 
 # Set the current Google Cloud project
 echo "[Setting up GCP Project...]"
-gcloud config set project darelsalam-source
+gcloud config set project mindzvue-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Provide yourself Organization Policy Administrator and Project Creator roles
 echo "[Assigning Roles...]"
-gcloud organizations add-iam-policy-binding 180646666718 --member="user:cloudasta@darelsalam.com" --role="roles/orgpolicy.policyAdmin"
+gcloud organizations add-iam-policy-binding 883905654251 --member="user:cloudasta@mindzvue.com" --role="roles/orgpolicy.policyAdmin"
 sleep 5 # Adding a delay of 5 seconds
-gcloud organizations add-iam-policy-binding 180646666718 --member="user:cloudasta@darelsalam.com" --role="roles/resourcemanager.projectCreator"
+gcloud organizations add-iam-policy-binding 883905654251 --member="user:cloudasta@mindzvue.com" --role="roles/resourcemanager.projectCreator"
 sleep 5 # Adding a delay of 5 seconds
 
 # Disable the constraint iam.disableServiceAccountKeyCreation enforcement
 echo "[Disabling Policy Enforcement...]"
-gcloud resource-manager org-policies disable-enforce iam.disableServiceAccountKeyCreation --organization=180646666718
+gcloud resource-manager org-policies disable-enforce iam.disableServiceAccountKeyCreation --organization=883905654251
 sleep 60 # Adding a delay of 60 seconds to allow propagation
 
 # Create a new service account
 echo "[Creating Service Account...]"
-gcloud iam service-accounts create Darelsalam-Source --project=darelsalam-source
+gcloud iam service-accounts create Mindzvue-Source --project=mindzvue-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Add IAM policy binding to the project
 echo "[Adding Policies...]"
-gcloud projects add-iam-policy-binding darelsalam-source --member="serviceAccount:Darelsalam-Source@darelsalam-source.iam.gserviceaccount.com" --role="roles/editor"
+gcloud projects add-iam-policy-binding mindzvue-source --member="serviceAccount:Mindzvue-Source@mindzvue-source.iam.gserviceaccount.com" --role="roles/editor"
 sleep 5 # Adding a delay of 5 seconds
 
 # Get the unique ID of the service account
 echo "[Obtaining Unique ID...]"
-gcloud iam service-accounts describe Darelsalam-Source@darelsalam-source.iam.gserviceaccount.com --project=darelsalam-source --format="value(uniqueId)"
+gcloud iam service-accounts describe Mindzvue-Source@mindzvue-source.iam.gserviceaccount.com --project=mindzvue-source --format="value(uniqueId)"
 sleep 5 # Adding a delay of 5 seconds
 
 # Create a service account key and save it to a JSON file
 echo "[Creating JSON Key...]"
-gcloud iam service-accounts keys create Darelsalam-Source.json --iam-account=Darelsalam-Source@darelsalam-source.iam.gserviceaccount.com --project=darelsalam-source
+gcloud iam service-accounts keys create Mindzvue-Source.json --iam-account=Mindzvue-Source@mindzvue-source.iam.gserviceaccount.com --project=mindzvue-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable necessary Google services
 echo "[Enabling APIs...]"
-gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=darelsalam-source
+gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com --project=mindzvue-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Download the service account key JSON file
 echo "[Downloading JSON Key...]"
-cloudshell download Darelsalam-Source.json
+cloudshell download Mindzvue-Source.json
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable the constraint iam.disableServiceAccountKeyCreation enforcement
 echo "[Re-enabling Policy Enforcement...]"
-gcloud resource-manager org-policies enable-enforce iam.disableServiceAccountKeyCreation --organization=180646666718
+gcloud resource-manager org-policies enable-enforce iam.disableServiceAccountKeyCreation --organization=883905654251
 sleep 5 # Adding a delay of 5 seconds
 
 # Tasks completed confirmation
