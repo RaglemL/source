@@ -2,59 +2,59 @@
 
 # Create a new Google Cloud project
 echo "[Creating GCP Project...]"
-gcloud projects create archive.bevelpr-source --name="Archive.Bevelpr-Source"
+gcloud projects create boo-source --name="Boo-Source"
 sleep 5 # Adding a delay of 5 seconds
 
 # Set the current Google Cloud project
 echo "[Setting up GCP Project...]"
-gcloud config set project archive.bevelpr-source
+gcloud config set project boo-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Provide yourself Organization Policy Administrator and Project Creator roles
 echo "[Assigning Roles...]"
-gcloud organizations add-iam-policy-binding 612762871216 --member="user:cloudasta@archive.bevelpr.com" --role="roles/orgpolicy.policyAdmin"
+gcloud organizations add-iam-policy-binding 320109442772 --member="user:cloudasta-ext@boo.ie" --role="roles/orgpolicy.policyAdmin"
 sleep 5 # Adding a delay of 5 seconds
-gcloud organizations add-iam-policy-binding 612762871216 --member="user:cloudasta@archive.bevelpr.com" --role="roles/resourcemanager.projectCreator"
+gcloud organizations add-iam-policy-binding 320109442772 --member="user:cloudasta-ext@boo.ie" --role="roles/resourcemanager.projectCreator"
 sleep 5 # Adding a delay of 5 seconds
 
 # Disable the constraint iam.disableServiceAccountKeyCreation enforcement
 echo "[Disabling Policy Enforcement...]"
-gcloud resource-manager org-policies disable-enforce iam.disableServiceAccountKeyCreation --organization=612762871216
+gcloud resource-manager org-policies disable-enforce iam.disableServiceAccountKeyCreation --organization=320109442772
 sleep 60 # Adding a delay of 60 seconds to allow propagation
 
 # Create a new service account
 echo "[Creating Service Account...]"
-gcloud iam service-accounts create Archive.Bevelpr-Source --project=archive.bevelpr-source
+gcloud iam service-accounts create Boo-Source --project=boo-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Add IAM policy binding to the project
 echo "[Adding Policies...]"
-gcloud projects add-iam-policy-binding archive.bevelpr-source --member="serviceAccount:Archive.Bevelpr-Source@archive.bevelpr-source.iam.gserviceaccount.com" --role="roles/editor"
+gcloud projects add-iam-policy-binding boo-source --member="serviceAccount:Boo-Source@boo-source.iam.gserviceaccount.com" --role="roles/editor"
 sleep 5 # Adding a delay of 5 seconds
 
 # Get the unique ID of the service account
 echo "[Obtaining Unique ID...]"
-gcloud iam service-accounts describe Archive.Bevelpr-Source@archive.bevelpr-source.iam.gserviceaccount.com --project=archive.bevelpr-source --format="value(uniqueId)"
+gcloud iam service-accounts describe Boo-Source@boo-source.iam.gserviceaccount.com --project=boo-source --format="value(uniqueId)"
 sleep 5 # Adding a delay of 5 seconds
 
 # Create a service account key and save it to a JSON file
 echo "[Creating JSON Key...]"
-gcloud iam service-accounts keys create Archive.Bevelpr-Source.json --iam-account=Archive.Bevelpr-Source@archive.bevelpr-source.iam.gserviceaccount.com --project=archive.bevelpr-source
+gcloud iam service-accounts keys create Boo-Source.json --iam-account=Boo-Source@boo-source.iam.gserviceaccount.com --project=boo-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable necessary Google services
 echo "[Enabling APIs...]"
-gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com chat.googleapis.com --project=archive.bevelpr-source
+gcloud services enable drive.googleapis.com sheets.googleapis.com admin.googleapis.com people.googleapis.com contacts.googleapis.com migrate.googleapis.com gmail.googleapis.com calendar-json.googleapis.com groupsmigration.googleapis.com groupssettings.googleapis.com tasks.googleapis.com forms.googleapis.com vault.googleapis.com storage-component.googleapis.com chat.googleapis.com --project=boo-source
 sleep 5 # Adding a delay of 5 seconds
 
 # Download the service account key JSON file
 echo "[Downloading JSON Key...]"
-cloudshell download Archive.Bevelpr-Source.json
+cloudshell download Boo-Source.json
 sleep 5 # Adding a delay of 5 seconds
 
 # Enable the constraint iam.disableServiceAccountKeyCreation enforcement
 echo "[Re-enabling Policy Enforcement...]"
-gcloud resource-manager org-policies enable-enforce iam.disableServiceAccountKeyCreation --organization=612762871216
+gcloud resource-manager org-policies enable-enforce iam.disableServiceAccountKeyCreation --organization=320109442772
 sleep 5 # Adding a delay of 5 seconds
 
 # Tasks completed confirmation
